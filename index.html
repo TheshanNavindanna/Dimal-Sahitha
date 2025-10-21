@@ -8,29 +8,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <script type="application/ld+json">
+    <!-- JSON-LD Schema (Keep this separate) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dimal Sahitha Loku Hennadige",
+  "jobTitle": "Hospitality Professional",
+  "description": "Dynamic hospitality professional with extensive experience in restaurant and bar operations, guest service excellence and team leadership.",
+  "email": "dimal.sahitha97@gmail.com",
+  "telephone": "+94-71-481-0129",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kudaheella, Beliatta",
+    "addressCountry": "Sri Lanka"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/dimal-sahitha-643bb8252/"
+  ]
+}
+</script>
 
-        
-
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Dimal Sahitha Loku Hennadige",
-      "jobTitle": "Hospitality Professional",
-      "description": "Dynamic hospitality professional with extensive experience in restaurant and bar operations, guest service excellence and team leadership.",
-      "email": "dimal.sahitha97@gmail.com",
-      "telephone": "+94-71-481-0129",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Kudaheella, Beliatta",
-        "addressCountry": "Sri Lanka"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/dimal-sahitha-643bb8252/"
-      ]
-    }
-
-    // Update the copy-to-clipboard function to prevent event bubbling
+<!-- Your JavaScript Code (Separate script tag) -->
+<script>
+// Update the copy-to-clipboard function to prevent event bubbling
 document.querySelectorAll('.copy-btn').forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault();
@@ -63,6 +64,152 @@ document.querySelectorAll('.clickable-contact').forEach(link => {
     });
 });
 
+// ===== Auto-Sliding Gallery Functionality =====
+function initAutoGallery() {
+    console.log('Initializing auto gallery...');
+    
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.querySelector('.slide-nav.prev');
+    const nextBtn = document.querySelector('.slide-nav.next');
+    
+    // Check if elements exist
+    if (!slides.length || !indicators.length || !prevBtn || !nextBtn) {
+        console.error('Auto gallery elements not found');
+        console.log('Slides:', slides.length);
+        console.log('Indicators:', indicators.length);
+        console.log('Prev button:', prevBtn);
+        console.log('Next button:', nextBtn);
+        return;
+    }
+    
+    let currentSlide = 0;
+    let slideInterval = null;
+    const slideDuration = 5000; // 5 seconds
+    
+    console.log(`Found ${slides.length} slides, ${indicators.length} indicators`);
+    
+    // Function to show a specific slide
+    function showSlide(index) {
+        console.log(`Showing slide ${index}`);
+        
+        // Remove active class from all slides and indicators
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Add active class to current slide and indicator
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        currentSlide = index;
+    }
+    
+    // Function to go to next slide
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+    
+    // Function to go to previous slide
+    function prevSlide() {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+    }
+    
+    // Start auto-sliding
+    function startAutoSlide() {
+        console.log('Starting auto slide');
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+        slideInterval = setInterval(nextSlide, slideDuration);
+    }
+    
+    // Stop auto-sliding
+    function stopAutoSlide() {
+        console.log('Stopping auto slide');
+        if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+        }
+    }
+    
+    // Event listeners for navigation buttons
+    prevBtn.addEventListener('click', () => {
+        console.log('Previous button clicked');
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        console.log('Next button clicked');
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
+    });
+    
+    // Event listeners for indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            console.log(`Indicator ${index} clicked`);
+            stopAutoSlide();
+            showSlide(index);
+            startAutoSlide();
+        });
+    });
+    
+    // Pause auto-slide on hover
+    const slider = document.querySelector('.auto-gallery-slider');
+    if (slider) {
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+    }
+    
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const slidesContainer = document.querySelector('.slides-container');
+    if (slidesContainer) {
+        slidesContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoSlide();
+        }, { passive: true });
+        
+        slidesContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoSlide();
+        }, { passive: true });
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide(); // Swipe left
+            } else {
+                prevSlide(); // Swipe right
+            }
+        }
+    }
+    
+    // Initialize the gallery
+    showSlide(0);
+    startAutoSlide();
+    
+    console.log('Auto gallery initialized successfully');
+}
+
+// Initialize when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded, initializing auto gallery...');
+    initAutoGallery();
+});
+
 // ===== Certificates Lightbox Functionality =====
 const certificates = [
     {
@@ -86,219 +233,80 @@ const certificates = [
     // Add more certificate objects as needed
 ];
 
-// Lightbox functionality
-const lightbox = document.getElementById('certificateLightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-const lightboxClose = document.getElementById('lightboxClose');
-const lightboxPrev = document.getElementById('lightboxPrev');
-const lightboxNext = document.getElementById('lightboxNext');
-const certificateCards = document.querySelectorAll('.certificate-card');
+// Initialize certificates when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Lightbox functionality
+    const lightbox = document.getElementById('certificateLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const certificateCards = document.querySelectorAll('.certificate-card');
 
-let currentIndex = 0;
+    let currentIndex = 0;
 
-// Open lightbox
-function openLightbox(index) {
-    currentIndex = index;
-    lightboxImage.src = certificates[index].image;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-// Close lightbox
-function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-// Navigate to previous certificate
-function prevCertificate() {
-    currentIndex = (currentIndex - 1 + certificates.length) % certificates.length;
-    lightboxImage.src = certificates[currentIndex].image;
-}
-
-// Navigate to next certificate
-function nextCertificate() {
-    currentIndex = (currentIndex + 1) % certificates.length;
-    lightboxImage.src = certificates[currentIndex].image;
-}
-
-// Event listeners for certificates
-certificateCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const index = parseInt(card.getAttribute('data-index'));
-        openLightbox(index);
-    });
-});
-
-lightboxClose.addEventListener('click', closeLightbox);
-lightboxPrev.addEventListener('click', prevCertificate);
-lightboxNext.addEventListener('click', nextCertificate);
-
-// Close lightbox when clicking outside the image
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        closeLightbox();
-    }
-});
-
-// Keyboard navigation for lightbox
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    
-    if (e.key === 'Escape') {
-        closeLightbox();
-    } else if (e.key === 'ArrowLeft') {
-        prevCertificate();
-    } else if (e.key === 'ArrowRight') {
-        nextCertificate();
-    }
-});
-
-// ===== Auto-Sliding Gallery Functionality =====
-        function initAutoGallery() {
-            console.log('Initializing auto gallery...');
-            
-            const slides = document.querySelectorAll('#auto-gallery .slide');
-            const indicators = document.querySelectorAll('#auto-gallery .indicator');
-            const prevBtn = document.querySelector('#auto-gallery .slide-nav.prev');
-            const nextBtn = document.querySelector('#auto-gallery .slide-nav.next');
-            
-            // Check if elements exist
-            if (!slides.length || !indicators.length || !prevBtn || !nextBtn) {
-                console.error('Auto gallery elements not found');
-                return;
-            }
-            
-            let currentSlide = 0;
-            let slideInterval = null;
-            const slideDuration = 5000; // 5 seconds
-            
-            console.log(`Found ${slides.length} slides, ${indicators.length} indicators`);
-            
-            // Function to show a specific slide
-            function showSlide(index) {
-                console.log(`Showing slide ${index}`);
-                
-                // Remove active class from all slides and indicators
-                slides.forEach(slide => slide.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                
-                // Add active class to current slide and indicator
-                slides[index].classList.add('active');
-                indicators[index].classList.add('active');
-                
-                currentSlide = index;
-            }
-            
-            // Function to go to next slide
-            function nextSlide() {
-                const nextIndex = (currentSlide + 1) % slides.length;
-                showSlide(nextIndex);
-            }
-            
-            // Function to go to previous slide
-            function prevSlide() {
-                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(prevIndex);
-            }
-            
-            // Start auto-sliding
-            function startAutoSlide() {
-                console.log('Starting auto slide');
-                if (slideInterval) {
-                    clearInterval(slideInterval);
-                }
-                slideInterval = setInterval(nextSlide, slideDuration);
-            }
-            
-            // Stop auto-sliding
-            function stopAutoSlide() {
-                console.log('Stopping auto slide');
-                if (slideInterval) {
-                    clearInterval(slideInterval);
-                    slideInterval = null;
-                }
-            }
-            
-            // Event listeners for navigation buttons
-            prevBtn.addEventListener('click', () => {
-                console.log('Previous button clicked');
-                stopAutoSlide();
-                prevSlide();
-                startAutoSlide();
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                console.log('Next button clicked');
-                stopAutoSlide();
-                nextSlide();
-                startAutoSlide();
-            });
-            
-            // Event listeners for indicators
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    console.log(`Indicator ${index} clicked`);
-                    stopAutoSlide();
-                    showSlide(index);
-                    startAutoSlide();
-                });
-            });
-            
-            // Pause auto-slide on hover
-            const slider = document.querySelector('#auto-gallery .auto-gallery-slider');
-            if (slider) {
-                slider.addEventListener('mouseenter', stopAutoSlide);
-                slider.addEventListener('mouseleave', startAutoSlide);
-            }
-            
-            // Touch swipe support for mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            const slidesContainer = document.querySelector('#auto-gallery .slides-container');
-            if (slidesContainer) {
-                slidesContainer.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                    stopAutoSlide();
-                }, { passive: true });
-                
-                slidesContainer.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                    startAutoSlide();
-                }, { passive: true });
-            }
-            
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-                
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        nextSlide(); // Swipe left
-                    } else {
-                        prevSlide(); // Swipe right
-                    }
-                }
-            }
-            
-            // Initialize the gallery
-            showSlide(0);
-            startAutoSlide();
-            
-            console.log('Auto gallery initialized successfully');
+    // Only initialize if lightbox elements exist
+    if (lightbox && lightboxImage && lightboxClose) {
+        // Open lightbox
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImage.src = certificates[index].image;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Initialize when DOM is fully loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initAutoGallery);
-        } else {
-            initAutoGallery();
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
+        // Navigate to previous certificate
+        function prevCertificate() {
+            currentIndex = (currentIndex - 1 + certificates.length) % certificates.length;
+            lightboxImage.src = certificates[currentIndex].image;
+        }
 
-    </script>
+        // Navigate to next certificate
+        function nextCertificate() {
+            currentIndex = (currentIndex + 1) % certificates.length;
+            lightboxImage.src = certificates[currentIndex].image;
+        }
+
+        // Event listeners for certificates
+        certificateCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const index = parseInt(card.getAttribute('data-index'));
+                openLightbox(index);
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevCertificate);
+        lightboxNext.addEventListener('click', nextCertificate);
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                prevCertificate();
+            } else if (e.key === 'ArrowRight') {
+                nextCertificate();
+            }
+        });
+    }
+});
+</script>
     <style>
         :root {
             --primary: #0F172A;
@@ -1880,7 +1888,8 @@ footer {
                     <div class="slides-container">
                         <!-- Slide 1 -->
                         <div class="slide active">
-                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fine Dining Experience">
+                             <img src="gallery/bar promotion.jpg" alt="img">
+
                             <div class="slide-caption">
                                 <h3>Fine Dining Excellence</h3>
                                 <p>Curated dining experiences at JEN Maldives</p>
@@ -1888,23 +1897,25 @@ footer {
                         </div>
                         <!-- Slide 2 -->
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Team Service">
+                            <img src="gallery/bar2.jpg" alt="img">
+
                             <div class="slide-caption">
-                                <h3>Team Coordination</h3>
+                                <h3>Covid Operations</h3>
                                 <p>Leading service teams for seamless guest experiences</p>
                             </div>
                         </div>
                         <!-- Slide 3 -->
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Beverage Service">
+                             <img src="gallery/covid.jpg" alt="img">
+
                             <div class="slide-caption">
-                                <h3>Beverage Service</h3>
-                                <p>Expert knowledge in wine and cocktail service</p>
+                                <h3>Covid Operations</h3>
+                                <p>Leading service teams for seamless guest experiences</p>
                             </div>
                         </div>
                         <!-- Slide 4 -->
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Setup">
+                            <img src="gallery/events.jpg" alt="img">
                             <div class="slide-caption">
                                 <h3>Event Management</h3>
                                 <p>Flawless execution of banquets and special events</p>
@@ -1912,7 +1923,8 @@ footer {
                         </div>
                         <!-- Slide 5 -->
                         <div class="slide">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Guest Interaction">
+                            <img src="gallery/special dinig.jpg" alt="img">
+
                             <div class="slide-caption">
                                 <h3>Guest Relations</h3>
                                 <p>Building lasting relationships with guests</p>
@@ -2170,45 +2182,60 @@ footer {
                     <!-- Certificate 1 - Replace with your actual certificate -->
                     <div class="certificate-card" data-index="0">
                         <div class="certificate-image">
-                            <img src="certificates/food-safety-certificate.jpg" alt="Food Safety Certification">
+                            <img src="certificates/certificate1.jpg" alt="Food Safety Certification">
                             <div class="certificate-overlay">
                                 <button class="view-certificate">View Certificate</button>
                             </div>
                         </div>
                         <div class="certificate-content">
-                            <h3 class="certificate-title">Food Safety & Hygiene Certification</h3>
-                            <div class="certificate-issuer">International Hospitality Institute</div>
-                            <div class="certificate-date">Issued: June 2022 | Expires: June 2025</div>
+                            <h3 class="certificate-title">Employee of the Month Certification</h3>
+                            <div class="certificate-issuer">JEN Maldives Malé by Shangri-La | Malé, Republic of Maldives</div>
+                            <div class="certificate-date">Issued: May 2025 </div>
                         </div>
                     </div>
                     
                     <!-- Certificate 2 - Replace with your actual certificate -->
                     <div class="certificate-card" data-index="1">
                         <div class="certificate-image">
-                            <img src="certificates/wine-service-certificate.jpg" alt="Wine Service Certification">
+                            <img src="certificates/certificate2.jpg" alt="Promotion Certification">
                             <div class="certificate-overlay">
                                 <button class="view-certificate">View Certificate</button>
                             </div>
                         </div>
                         <div class="certificate-content">
-                            <h3 class="certificate-title">Professional Wine Service Certification</h3>
-                            <div class="certificate-issuer">World Sommelier Association</div>
-                            <div class="certificate-date">Issued: March 2021</div>
+                            <h3 class="certificate-title">Promotion Certification</h3>
+                            <div class="certificate-issuer">Weligama Bay Marriott Resort & Spa | Weligama, Sri Lanka</div>
+                            <div class="certificate-date">Issued: 1 March 2023</div>
                         </div>
                     </div>
                     
                     <!-- Certificate 3 - Replace with your actual certificate -->
                     <div class="certificate-card" data-index="2">
                         <div class="certificate-image">
-                            <img src="certificates/leadership-training.jpg" alt="Leadership Training">
+                            <img src="certificates/certificate3.jpg" alt="Service Letter">
                             <div class="certificate-overlay">
                                 <button class="view-certificate">View Certificate</button>
                             </div>
                         </div>
                         <div class="certificate-content">
-                            <h3 class="certificate-title">Hospitality Leadership Training</h3>
-                            <div class="certificate-issuer">Marriott International</div>
-                            <div class="certificate-date">Issued: November 2020</div>
+                            <h3 class="certificate-title">Service Letter</h3>
+                            <div class="certificate-issuer">JEN Maldives Malé by Shangri-La | Malé, Republic of Maldives</div>
+                            <div class="certificate-date">Issued: Jul 2025</div>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 4 - Replace with your actual certificate -->
+                    <div class="certificate-card" data-index="2">
+                        <div class="certificate-image">
+                            <img src="certificates/certificate4.jpg" alt="Service Letter">
+                            <div class="certificate-overlay">
+                                <button class="view-certificate">View Certificate</button>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Service Letter</h3>
+                            <div class="certificate-issuer">Weligama Bay Marriott Resort & Spa | Weligama, Sri Lanka</div>
+                            <div class="certificate-date">Issued: Sep 2019</div>
                         </div>
                     </div>
                     
@@ -2496,20 +2523,24 @@ footer {
         const sections = document.querySelectorAll('section[id]');
         
         function highlightActiveLink() {
-            const scrollY = window.pageYOffset;
-            
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 100;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.add('active');
-                } else {
-                    document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.remove('active');
-                }
-            });
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+        // Check if the navLink exists
+        if (navLink) {
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLink.classList.add('active');
+            } else {
+                navLink.classList.remove('active');
+            }
         }
+    });
+}
 
         window.addEventListener('scroll', highlightActiveLink);
 
