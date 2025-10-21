@@ -856,46 +856,81 @@ document.querySelectorAll('.clickable-contact').forEach(link => {
         }
 
         /* Footer */
-        footer {
-            background-color: var(--muted-bg);
-            padding: var(--spacing-xl) 0;
-            text-align: center;
-            border-top: 1px solid var(--card-border);
-        }
+footer {
+    background-color: var(--muted-bg);
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--card-border);
+}
 
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .social-links {
-            display: flex;
-            gap: var(--spacing-md);
-        }
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
 
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            color: var(--text-light);
-            transition: var(--transition);
-        }
+.copyright {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
 
-        .social-link:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
+.design-credit {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
 
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
+.designer-link {
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.designer-link:hover {
+    color: var(--text-light);
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background-color: var(--accent);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .footer-content {
+        align-items: center;
+    }
+}
 
         /* Back to top */
         .back-to-top {
@@ -1603,11 +1638,16 @@ document.querySelectorAll('.clickable-contact').forEach(link => {
         </div>
     </section>
 
-    <!-- Footer -->
+        <!-- Footer -->
     <footer>
         <div class="container footer-container">
-            <div class="copyright">
-                &copy; 2023 Dimal Sahitha. All rights reserved.
+            <div class="footer-content">
+                <div class="copyright">
+                    &copy; 2025 Dimal Sahitha. All rights reserved.
+                </div>
+                <div class="design-credit">
+                    Designed by <a href="https://theshannavindanna.github.io/MHTNavindanaPortfolio/" target="_blank" class="designer-link">Theshan Navindana</a>
+                </div>
             </div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/dimal-sahitha-643bb8252/" class="social-link" target="_blank" aria-label="LinkedIn">
