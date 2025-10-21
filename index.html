@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimal Sahitha | Hospitality Professional</title>
+    <meta name="description" content="Dynamic hospitality professional with extensive experience in restaurant and bar operations, guest service excellence and team leadership.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dimal Sahitha Loku Hennadige",
+      "jobTitle": "Hospitality Professional",
+      "description": "Dynamic hospitality professional with extensive experience in restaurant and bar operations, guest service excellence and team leadership.",
+      "email": "dimal.sahitha97@gmail.com",
+      "telephone": "+94-71-481-0129",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kudaheella, Beliatta",
+        "addressCountry": "Sri Lanka"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/dimal-sahitha-643bb8252/"
+      ]
+    }
+
+    // Update the copy-to-clipboard function to prevent event bubbling
+document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); // Prevent triggering the parent link
+        
+        const textToCopy = this.getAttribute('data-clipboard-text');
+        
+        if (textToCopy) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Visual feedback
+                const originalHTML = this.innerHTML;
+                this.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalHTML;
+                }, 2000);
+            });
+        }
+    });
+});
+
+// Add click handlers for contact items to prevent double triggering
+document.querySelectorAll('.clickable-contact').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // If the click was on the copy button, don't trigger the link
+        if (e.target.closest('.copy-btn')) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+});
+    </script>
+    <style>
+        :root {
+            --primary: #0F172A;
+            --accent: #06B6D4;
+            --muted-bg: #0B1220;
+            --text-light: #E5E7EB;
+            --text-muted: #94A3B8;
+            --card-bg: #0B1020;
+            --card-border: rgba(255,255,255,0.08);
+            --border-radius: 12px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --spacing-3xl: 64px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-muted);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--text-light);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(11, 18, 32, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-xl);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-light);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--muted-bg);
+            padding: var(--spacing-3xl) 0;
+            margin-top: 72px;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-role {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0da4bf;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .pill {
+            display: inline-block;
+            background-color: rgba(6, 182, 212, 0.2);
+            color: var(--accent);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .contact-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(6, 182, 212, 0.1);
+            border-radius: 8px;
+            color: var(--accent);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .contact-value {
+            font-weight: 500;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-title h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About */
+        .about-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--card-border);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            text-align: left;
+        }
+
+        /* Gallery */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--card-border);
+    aspect-ratio: 4/3;
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(11, 18, 32, 0.9));
+    padding: var(--spacing-lg);
+    color: var(--text-light);
+    transform: translateY(100%);
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+.gallery-caption h3 {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.1rem;
+}
+
+.gallery-caption p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+        /* Expertise */
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.expertise-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+}
+
+.expertise-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.expertise-image {
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+}
+
+.expertise-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.expertise-card:hover .expertise-image img {
+    transform: scale(1.1);
+}
+
+.expertise-content {
+    padding: var(--spacing-lg);
+    text-align: center;
+    position: relative;
+}
+
+.expertise-content h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .expertise-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .expertise-image {
+        height: 140px;
+    }
+}
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--card-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--spacing-2xl);
+            padding-left: 80px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 22px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+
+        .timeline-date {
+            font-size: 0.875rem;
+            color: var(--accent);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .timeline-company {
+            color: var(--accent);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .timeline-list {
+            list-style: none;
+        }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-muted);
+        }
+
+        .timeline-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .education-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+        }
+
+        .education-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .education-degree {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .education-school {
+            color: var(--accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .education-year {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills */
+        .skills-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Languages */
+        .languages-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .language-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .language-name {
+            display: flex;
+            justify-content: between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .language-level {
+            color: var(--accent);
+        }
+
+        .language-bar {
+            height: 8px;
+            background-color: var(--card-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .language-progress {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* References */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .reference-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+        }
+
+        .reference-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .reference-name {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .reference-position {
+            color: var(--accent);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .reference-contact {
+            color: var(--text-muted);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-details {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+.clickable-contact {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: var(--spacing-sm);
+    margin: calc(var(--spacing-sm) * -1);
+    transition: var(--transition);
+}
+
+.clickable-contact:hover {
+    background-color: rgba(6, 182, 212, 0.1);
+    transform: translateX(4px);
+}
+
+.contact-details:hover .contact-value {
+    color: var(--accent);
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+}
+
+.copy-btn:hover {
+    background-color: rgba(6, 182, 212, 0.1);
+    color: var(--accent);
+}
+
+/* Mobile responsive updates */
+@media (max-width: 768px) {
+    .clickable-contact {
+        padding: var(--spacing-xs);
+        margin: calc(var(--spacing-xs) * -1);
+    }
+}
+
+        .contact-form {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--spacing-md);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--muted-bg);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            right: var(--spacing-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background-color: var(--muted-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: var(--spacing-xl) 0;
+                gap: var(--spacing-lg);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                border-bottom: 1px solid var(--card-border);
+            }
+
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-image {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline-dot {
+                left: 14px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Dimal<span>Sahitha</span></a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#expertise" class="nav-link">Expertise</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#languages" class="nav-link">Languages</a></li>
+                    <li><a href="#references" class="nav-link">References</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Dimal Sahitha Loku Hennadige</h1>
+                <p class="hero-role">Hospitality Professional</p>
+                <p>Dynamic hospitality professional with extensive experience in restaurant and bar operations, guest service excellence and team leadership. Proven ability to supervise large teams while maintaining high service standards and operational efficiency.</p>
+                <div class="pill">Available for opportunities</div>
+                <div class="hero-buttons">
+                    <a href="Dimal-Sahitha-CV.pdf" class="btn btn-primary" download>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M14 10v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4M6 7l2 2 2-2M8 9V1"/>
+                        </svg>
+                        Download PDF CV
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+94 71 481 0129</div>
+                    </div>
+                    <button class="copy-btn" data-clipboard-text="+94714810129">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">dimal.sahitha97@gmail.com</div>
+                    </div>
+                    <button class="copy-btn" data-clipboard-text="dimal.sahitha97@gmail.com">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Kudaheella, Beliatta, Sri Lanka</div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Kudaheella,Beliatta,SriLanka" target="_blank" class="copy-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                            <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">/in/dimal-sahitha-643bb8252</div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/dimal-sahitha-643bb8252/" target="_blank" class="copy-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                            <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-container">
+                <div class="profile-image">
+                    <!-- Replace this src with your actual profile image path -->
+                    <img src="profile-photo.jpg" alt="Dimal Sahitha - Hospitality Professional">
+                </div>
+                <div class="about-content">
+                    <p>Skilled in inventory control, staff training, conflict resolution and compliance with hygiene regulations. Demonstrated success in improving customer satisfaction, reducing operational costs, and enhancing service flow through effective coordination. Adept at managing high-pressure environments, delivering seamless dining experiences and fostering a positive work culture.</p>
+                    <p>With over 6 years of progressive experience in the hospitality industry, I have developed a comprehensive understanding of restaurant and bar operations. My career journey has taken me from trainee roles to supervisory positions in prestigious international hotel chains, where I've honed my skills in team leadership, guest relations, and operational excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Gallery</h2>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="gallery/fine-dining-service.jpg" alt="Certification at JEN Maldives" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h3>Certification</h3>
+                            <p>Certification at at JEN Maldives</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="gallery/team-leadership.jpg" alt="Team Leadership at Marriott Resort" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h3>Team Leadership</h3>
+                            <p>Supervising restaurant operations at Marriott Resort</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="gallery/bar-operations.jpg" alt="Bar Operations and Beverage Service" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h3>Bar Operations</h3>
+                            <p>Expertise in beverage service and management</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="gallery/event-management.jpg" alt="Event and Banquet Management" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h3>Event Management</h3>
+                            <p>Coordinating banquet services and special events</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="gallery/guest-relations.jpg" alt="Guest Relations and Customer Service" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h3>Guest Relations</h3>
+                            <p>Ensuring exceptional customer service standards</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="gallery/training-development.jpg" alt="Staff Training and Development" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h3>Training & Development</h3>
+                            <p>Mentoring and developing hospitality teams</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Expertise Section -->
+    <section id="expertise">
+        <div class="container">
+            <div class="section-title">
+                <h2>Areas of Expertise</h2>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/menu-planning.jpg" alt="Menu Planning & Presentation">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Menu Planning & Presentation</h3>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/food-safety.jpg" alt="Food Safety Compliance">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Food Safety Compliance</h3>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/pos-system.jpg" alt="POS System Operation">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>POS System Operation</h3>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/inventory-control.jpg" alt="Inventory & Stock Control">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Inventory & Stock Control</h3>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/event-management.jpg" alt="Event & Banquet Management">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Event & Banquet Management</h3>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/guest-complaint.jpg" alt="Guest Complaint Resolution">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Guest Complaint Resolution</h3>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/upselling.jpg" alt="Upselling & Sales Techniques">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Upselling & Sales Techniques</h3>
+                    </div>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-image">
+                        <img src="expertise/staff-training.jpg" alt="Staff Training & Development">
+                    </div>
+                    <div class="expertise-content">
+                        <h3>Staff Training & Development</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Nov 2024 – Jul 2025</div>
+                    <div class="timeline-content">
+                        <h3>Food & Beverage Server</h3>
+                        <div class="timeline-company">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                            JEN Maldives Malé by Shangri-La (Malé, Republic of Maldives)
+                        </div>
+                        <ul class="timeline-list">
+                            <li>Greet guests warmly and escort them to their assigned tables.</li>
+                            <li>Present menus clearly and recommend dishes based on guest preferences.</li>
+                            <li>Accurately record orders using the hotel's advanced POS system.</li>
+                            <li>Serve meals and beverages promptly, following strict hotel service standards.</li>
+                            <li>Keep dining areas clean, organized, and ready for immediate service.</li>
+                            <li>Monitor guest satisfaction and address all concerns or complaints promptly.</li>
+                            <li>Coordinate with kitchen and bar teams to ensure smooth service.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Mar 2023 – Nov 2024</div>
+                    <div class="timeline-content">
+                        <h3>Restaurant & Bar Supervisor</h3>
+                        <div class="timeline-company">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                            Weligama Bay Marriott Resort & Spa (Weligama, Sri Lanka)
+                        </div>
+                        <ul class="timeline-list">
+                            <li>Supervised daily restaurant operations ensuring seamless overall guest experiences.</li>
+                            <li>Trained and motivated staff to consistently maintain service excellence.</li>
+                            <li>Monitored team performance and provided feedback for continuous improvement.</li>
+                            <li>Resolved guest complaints professionally to ensure customer satisfaction.</li>
+                            <li>Coordinated with kitchen and bar for timely, accurate service delivery.</li>
+                            <li>Conducted pre-shift briefings with updates and promotional information.</li>
+                            <li>Controlled inventory levels and reduced operational costs effectively.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Mar 2022 – Mar 2023</div>
+                    <div class="timeline-content">
+                        <h3>Restaurant Captain</h3>
+                        <div class="timeline-company">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                            Weligama Bay Marriott Resort & Spa (Weligama, Sri Lanka)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Sep 2019 – Mar 2022</div>
+                    <div class="timeline-content">
+                        <h3>Restaurant Server</h3>
+                        <div class="timeline-company">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                            Weligama Bay Marriott Resort & Spa (Weligama, Sri Lanka)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Oct 2018 – Sep 2019</div>
+                    <div class="timeline-content">
+                        <h3>Intern</h3>
+                        <div class="timeline-company">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                            Weligama Bay Marriott Resort & Spa (Weligama, Sri Lanka)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2018 – 2019</div>
+                    <div class="timeline-content">
+                        <h3>Trainee Waiter</h3>
+                        <div class="timeline-company">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                            Dickwella Resort & Spa (Dickwella, Sri Lanka)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-degree">Higher National Diploma in Tourism & Hospitality Management</div>
+                    <div class="education-school">Swiss Lanka Hotel School (Colombo, Sri Lanka)</div>
+                    <div class="education-year">2019</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-degree">Diploma in Hotel Management</div>
+                    <div class="education-school">Swiss Lanka Hotel School (Colombo, Sri Lanka)</div>
+                    <div class="education-year">2018–2019</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-degree">GCE A/L</div>
+                    <div class="education-school">Department of Examinations (Sri Lanka)</div>
+                    <div class="education-year">2016</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-degree">GCE O/L</div>
+                    <div class="education-school">Department of Examinations (Sri Lanka)</div>
+                    <div class="education-year">2013</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Soft Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skills-tags">
+                    <div class="skill-tag">Effective Communication</div>
+                    <div class="skill-tag">Critical Thinking</div>
+                    <div class="skill-tag">Decision-Making</div>
+                    <div class="skill-tag">Customer Service Excellence</div>
+                    <div class="skill-tag">Strong Interpersonal Relations</div>
+                    <div class="skill-tag">Team Leadership</div>
+                    <div class="skill-tag">Problem Solving</div>
+                    <div class="skill-tag">Time Management</div>
+                    <div class="skill-tag">Adaptability</div>
+                    <div class="skill-tag">Conflict Resolution</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Languages</h2>
+            </div>
+            <div class="languages-container">
+                <div class="language-item">
+                    <div class="language-name">
+                        <span>Sinhala</span>
+                        <span class="language-level">Native</span>
+                    </div>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">
+                        <span>English</span>
+                        <span class="language-level">Intermediate</span>
+                    </div>
+                    <div class="language-bar">
+                        <div class="language-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references">
+        <div class="container">
+            <div class="section-title">
+                <h2>References</h2>
+            </div>
+            <div class="references-grid">
+                <div class="reference-card">
+                    <div class="reference-name">Mr. Charitha Lankanath</div>
+                    <div class="reference-position">Restaurant Manager, Weligama Bay Marriott Resort & Spa</div>
+                    <div class="reference-contact">
+                        <div>M: +94 71 583 1160</div>
+                        <div>E: charitha.lankanath@marriotthotels.com</div>
+                    </div>
+                </div>
+                <div class="reference-card">
+                    <div class="reference-name">Mr. Indika Hettiarachchi</div>
+                    <div class="reference-position">Service Manager – Food & Beverage, JEN Maldives – Malé by Shangri-La</div>
+                    <div class="reference-contact">
+                        <div>M: +960 735 9961 | T: +960 330 0888</div>
+                        <div>E: indika.hettiarachchi@hoteljen.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <a href="tel:+94714810129" class="contact-details clickable-contact">
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">+94 71 481 0129</div>
+                        </a>
+                        <button class="copy-btn" data-clipboard-text="+94714810129">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <a href="mailto:dimal.sahitha97@gmail.com" class="contact-details clickable-contact">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">dimal.sahitha97@gmail.com</div>
+                        </a>
+                        <button class="copy-btn" data-clipboard-text="dimal.sahitha97@gmail.com">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <a href="https://maps.google.com/?q=Kudaheella,Beliatta,SriLanka" target="_blank" class="contact-details clickable-contact">
+                            <div class="contact-label">Location</div>
+                            <div class="contact-value">Kudaheella, Beliatta, Sri Lanka</div>
+                        </a>
+                        <a href="https://maps.google.com/?q=Kudaheella,Beliatta,SriLanka" target="_blank" class="copy-btn">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </div>
+                        <a href="https://www.linkedin.com/in/dimal-sahitha-643bb8252/" target="_blank" class="contact-details clickable-contact">
+                            <div class="contact-label">LinkedIn</div>
+                            <div class="contact-value">/in/dimal-sahitha-643bb8252</div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dimal-sahitha-643bb8252/" target="_blank" class="copy-btn">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="copyright">
+                &copy; 2023 Dimal Sahitha. All rights reserved.
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/dimal-sahitha-643bb8252/" class="social-link" target="_blank" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="mailto:dimal.sahitha97@gmail.com" class="social-link" aria-label="Email">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+                <a href="tel:+94714810129" class="social-link" aria-label="Phone">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active Link Highlighting on Scroll
+        const sections = document.querySelectorAll('section[id]');
+        
+        function highlightActiveLink() {
+            const scrollY = window.pageYOffset;
+            
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.add('active');
+                } else {
+                    document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveLink);
+
+        // Copy to Clipboard
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const textToCopy = this.getAttribute('data-clipboard-text');
+                
+                if (textToCopy) {
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Visual feedback
+                        const originalHTML = this.innerHTML;
+                        this.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                        }, 2000);
+                    });
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        function toggleBackToTop() {
+            if (window.pageYOffset > 400) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        }
+        
+        window.addEventListener('scroll', toggleBackToTop);
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server
+            // For this demo, we'll just show a success message
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Initialize
+        highlightActiveLink();
+        toggleBackToTop();
+    </script>
+</body>
+</html>
