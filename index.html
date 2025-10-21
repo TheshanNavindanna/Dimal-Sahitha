@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <script type="application/ld+json">
+
+        
+
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -59,6 +62,242 @@ document.querySelectorAll('.clickable-contact').forEach(link => {
         }
     });
 });
+
+// ===== Certificates Lightbox Functionality =====
+const certificates = [
+    {
+        title: "Food Safety & Hygiene Certification",
+        issuer: "International Hospitality Institute",
+        date: "Issued: June 2022 | Expires: June 2025",
+        image: "assets/images/certificates/food-safety-certificate.jpg"
+    },
+    {
+        title: "Professional Wine Service Certification",
+        issuer: "World Sommelier Association",
+        date: "Issued: March 2021",
+        image: "assets/images/certificates/wine-service-certificate.jpg"
+    },
+    {
+        title: "Hospitality Leadership Training",
+        issuer: "Marriott International",
+        date: "Issued: November 2020",
+        image: "assets/images/certificates/leadership-training.jpg"
+    }
+    // Add more certificate objects as needed
+];
+
+// Lightbox functionality
+const lightbox = document.getElementById('certificateLightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
+const certificateCards = document.querySelectorAll('.certificate-card');
+
+let currentIndex = 0;
+
+// Open lightbox
+function openLightbox(index) {
+    currentIndex = index;
+    lightboxImage.src = certificates[index].image;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close lightbox
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Navigate to previous certificate
+function prevCertificate() {
+    currentIndex = (currentIndex - 1 + certificates.length) % certificates.length;
+    lightboxImage.src = certificates[currentIndex].image;
+}
+
+// Navigate to next certificate
+function nextCertificate() {
+    currentIndex = (currentIndex + 1) % certificates.length;
+    lightboxImage.src = certificates[currentIndex].image;
+}
+
+// Event listeners for certificates
+certificateCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const index = parseInt(card.getAttribute('data-index'));
+        openLightbox(index);
+    });
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxPrev.addEventListener('click', prevCertificate);
+lightboxNext.addEventListener('click', nextCertificate);
+
+// Close lightbox when clicking outside the image
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') {
+        closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+        prevCertificate();
+    } else if (e.key === 'ArrowRight') {
+        nextCertificate();
+    }
+});
+
+// ===== Auto-Sliding Gallery Functionality =====
+        function initAutoGallery() {
+            console.log('Initializing auto gallery...');
+            
+            const slides = document.querySelectorAll('#auto-gallery .slide');
+            const indicators = document.querySelectorAll('#auto-gallery .indicator');
+            const prevBtn = document.querySelector('#auto-gallery .slide-nav.prev');
+            const nextBtn = document.querySelector('#auto-gallery .slide-nav.next');
+            
+            // Check if elements exist
+            if (!slides.length || !indicators.length || !prevBtn || !nextBtn) {
+                console.error('Auto gallery elements not found');
+                return;
+            }
+            
+            let currentSlide = 0;
+            let slideInterval = null;
+            const slideDuration = 5000; // 5 seconds
+            
+            console.log(`Found ${slides.length} slides, ${indicators.length} indicators`);
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                console.log(`Showing slide ${index}`);
+                
+                // Remove active class from all slides and indicators
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                // Add active class to current slide and indicator
+                slides[index].classList.add('active');
+                indicators[index].classList.add('active');
+                
+                currentSlide = index;
+            }
+            
+            // Function to go to next slide
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
+            }
+            
+            // Function to go to previous slide
+            function prevSlide() {
+                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(prevIndex);
+            }
+            
+            // Start auto-sliding
+            function startAutoSlide() {
+                console.log('Starting auto slide');
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                }
+                slideInterval = setInterval(nextSlide, slideDuration);
+            }
+            
+            // Stop auto-sliding
+            function stopAutoSlide() {
+                console.log('Stopping auto slide');
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = null;
+                }
+            }
+            
+            // Event listeners for navigation buttons
+            prevBtn.addEventListener('click', () => {
+                console.log('Previous button clicked');
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                console.log('Next button clicked');
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
+            
+            // Event listeners for indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    console.log(`Indicator ${index} clicked`);
+                    stopAutoSlide();
+                    showSlide(index);
+                    startAutoSlide();
+                });
+            });
+            
+            // Pause auto-slide on hover
+            const slider = document.querySelector('#auto-gallery .auto-gallery-slider');
+            if (slider) {
+                slider.addEventListener('mouseenter', stopAutoSlide);
+                slider.addEventListener('mouseleave', startAutoSlide);
+            }
+            
+            // Touch swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            const slidesContainer = document.querySelector('#auto-gallery .slides-container');
+            if (slidesContainer) {
+                slidesContainer.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopAutoSlide();
+                }, { passive: true });
+                
+                slidesContainer.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                    startAutoSlide();
+                }, { passive: true });
+            }
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextSlide(); // Swipe left
+                    } else {
+                        prevSlide(); // Swipe right
+                    }
+                }
+            }
+            
+            // Initialize the gallery
+            showSlide(0);
+            startAutoSlide();
+            
+            console.log('Auto gallery initialized successfully');
+        }
+
+        // Initialize when DOM is fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAutoGallery);
+        } else {
+            initAutoGallery();
+        }
+
+
     </script>
     <style>
         :root {
@@ -478,10 +717,204 @@ document.querySelectorAll('.clickable-contact').forEach(link => {
     margin-bottom: 0;
 }
 
+
 /* Mobile responsive */
 @media (max-width: 768px) {
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+
+/* ===== Auto-Sliding Gallery Section ===== */
+.auto-gallery-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.auto-gallery-slider {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--card-border);
+}
+
+.slides-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(11, 18, 32, 0.9));
+    padding: var(--spacing-xl);
+    color: var(--text-light);
+    transform: translateY(20px);
+    transition: transform 0.5s ease 0.3s;
+}
+
+.slide.active .slide-caption {
+    transform: translateY(0);
+}
+
+.slide-caption h3 {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.5rem;
+}
+
+.slide-caption p {
+    color: var(--text-muted);
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+/* Navigation Arrows */
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(6, 182, 212, 0.8);
+    color: var(--primary);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.auto-gallery-slider:hover .slide-nav {
+    opacity: 1;
+}
+
+.slide-nav:hover {
+    background: var(--accent);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slide-nav.prev {
+    left: var(--spacing-lg);
+}
+
+.slide-nav.next {
+    right: var(--spacing-lg);
+}
+
+/* Slide Indicators */
+.slide-indicators {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--spacing-sm);
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--text-light);
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.indicator.active, .indicator:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .slides-container {
+        height: 400px;
+    }
+    
+    .slide-caption {
+        padding: var(--spacing-lg);
+    }
+    
+    .slide-caption h3 {
+        font-size: 1.25rem;
+    }
+    
+    .slide-caption p {
+        font-size: 0.9rem;
+    }
+    
+    .slide-nav {
+        width: 40px;
+        height: 40px;
+        opacity: 0.7;
+    }
+    
+    .auto-gallery-slider:hover .slide-nav {
+        opacity: 0.7;
+    }
+    
+    .slide-nav.prev {
+        left: var(--spacing-md);
+    }
+    
+    .slide-nav.next {
+        right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .slides-container {
+        height: 300px;
+    }
+    
+    .slide-caption {
+        padding: var(--spacing-md);
+    }
+    
+    .slide-caption h3 {
+        font-size: 1.1rem;
+    }
+    
+    .slide-caption p {
+        font-size: 0.875rem;
     }
 }
 
@@ -661,6 +1094,199 @@ document.querySelectorAll('.clickable-contact').forEach(link => {
             font-size: 0.875rem;
             color: var(--text-muted);
         }
+
+        /* ===== Certificates Section ===== */
+.certificates-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.certificate-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.certificate-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.certificate-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.certificate-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.certificate-card:hover .certificate-image img {
+    transform: scale(1.05);
+}
+
+.certificate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(6, 182, 212, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.certificate-card:hover .certificate-overlay {
+    opacity: 1;
+}
+
+.view-certificate {
+    background: var(--primary);
+    color: var(--text-light);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.view-certificate:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+.certificate-content {
+    padding: var(--spacing-lg);
+}
+
+.certificate-title {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.certificate-issuer {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.certificate-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+/* ===== Lightbox Modal ===== */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 18, 32, 0.95);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 var(--spacing-lg);
+}
+
+.lightbox-prev, .lightbox-next {
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: var(--text-light);
+}
+
+/* Mobile responsive for certificates */
+@media (max-width: 768px) {
+    .certificates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .lightbox-nav {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .lightbox-prev, .lightbox-next {
+        width: 36px;
+        height: 36px;
+    }
+}
 
         /* Skills */
         .skills-container {
@@ -1194,10 +1820,10 @@ footer {
             <div class="gallery-container">
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="gallery/fine-dining-service.jpg" alt="Certification at JEN Maldives" class="gallery-image">
+                        <img src="gallery/guest1.jpg" alt="Fine Dinning Service" class="gallery-image">
                         <div class="gallery-caption">
-                            <h3>Certification</h3>
-                            <p>Certification at at JEN Maldives</p>
+                            <h3>Fine Dinning Service</h3>
+                            <p>Fine Dinning Service</p>
                         </div>
                     </div>
                     <div class="gallery-item">
@@ -1215,14 +1841,14 @@ footer {
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="gallery/event-management.jpg" alt="Event and Banquet Management" class="gallery-image">
+                        <img src="gallery/event-management.jpg" alt="New Year Eve Event" class="gallery-image">
                         <div class="gallery-caption">
-                            <h3>Event Management</h3>
-                            <p>Coordinating banquet services and special events</p>
+                            <h3>New Year Eve Event</h3>
+                            <p>New Year Eve  special events</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="gallery/guest-relations.jpg" alt="Guest Relations and Customer Service" class="gallery-image">
+                        <img src="gallery/class.jpg" alt="Guest Relations and Customer Service" class="gallery-image">
                         <div class="gallery-caption">
                             <h3>Guest Relations</h3>
                             <p>Ensuring exceptional customer service standards</p>
@@ -1234,6 +1860,85 @@ footer {
                             <h3>Training & Development</h3>
                             <p>Mentoring and developing hospitality teams</p>
                         </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- Auto-Sliding Gallery Section -->
+    <section id="auto-gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hospitality Excellence</h2>
+                <p>Showcasing memorable moments and exceptional service experiences</p>
+            </div>
+            <div class="auto-gallery-container">
+                <div class="auto-gallery-slider">
+                    <div class="slides-container">
+                        <!-- Slide 1 -->
+                        <div class="slide active">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fine Dining Experience">
+                            <div class="slide-caption">
+                                <h3>Fine Dining Excellence</h3>
+                                <p>Curated dining experiences at JEN Maldives</p>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Team Service">
+                            <div class="slide-caption">
+                                <h3>Team Coordination</h3>
+                                <p>Leading service teams for seamless guest experiences</p>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Beverage Service">
+                            <div class="slide-caption">
+                                <h3>Beverage Service</h3>
+                                <p>Expert knowledge in wine and cocktail service</p>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Event Setup">
+                            <div class="slide-caption">
+                                <h3>Event Management</h3>
+                                <p>Flawless execution of banquets and special events</p>
+                            </div>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Guest Interaction">
+                            <div class="slide-caption">
+                                <h3>Guest Relations</h3>
+                                <p>Building lasting relationships with guests</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button class="slide-nav prev" aria-label="Previous slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="slide-nav next" aria-label="Next slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Slide Indicators -->
+                    <div class="slide-indicators">
+                        <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                        <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                        <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                        <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+                        <button class="indicator" data-slide="4" aria-label="Go to slide 5"></button>
                     </div>
                 </div>
             </div>
@@ -1452,6 +2157,78 @@ footer {
             </div>
         </div>
     </section>
+
+        <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Certificates</h2>
+                <p>Credentials and certifications that validate my expertise in hospitality management</p>
+            </div>
+            <div class="certificates-container">
+                <div class="certificates-grid">
+                    <!-- Certificate 1 - Replace with your actual certificate -->
+                    <div class="certificate-card" data-index="0">
+                        <div class="certificate-image">
+                            <img src="certificates/food-safety-certificate.jpg" alt="Food Safety Certification">
+                            <div class="certificate-overlay">
+                                <button class="view-certificate">View Certificate</button>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Food Safety & Hygiene Certification</h3>
+                            <div class="certificate-issuer">International Hospitality Institute</div>
+                            <div class="certificate-date">Issued: June 2022 | Expires: June 2025</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 2 - Replace with your actual certificate -->
+                    <div class="certificate-card" data-index="1">
+                        <div class="certificate-image">
+                            <img src="certificates/wine-service-certificate.jpg" alt="Wine Service Certification">
+                            <div class="certificate-overlay">
+                                <button class="view-certificate">View Certificate</button>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Professional Wine Service Certification</h3>
+                            <div class="certificate-issuer">World Sommelier Association</div>
+                            <div class="certificate-date">Issued: March 2021</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 3 - Replace with your actual certificate -->
+                    <div class="certificate-card" data-index="2">
+                        <div class="certificate-image">
+                            <img src="certificates/leadership-training.jpg" alt="Leadership Training">
+                            <div class="certificate-overlay">
+                                <button class="view-certificate">View Certificate</button>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3 class="certificate-title">Hospitality Leadership Training</h3>
+                            <div class="certificate-issuer">Marriott International</div>
+                            <div class="certificate-date">Issued: November 2020</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add more certificates as needed -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="certificateLightbox">
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Certificate">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <div class="lightbox-nav">
+                <button class="lightbox-prev" id="lightboxPrev">&lt;</button>
+                <button class="lightbox-next" id="lightboxNext">&gt;</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Skills Section -->
     <section id="skills">
